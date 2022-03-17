@@ -1,5 +1,5 @@
 import requests
-
+import re
 
 class Opms():
     def __init__(self, s=requests.session(), host="http://123.56.170.43:8888"):
@@ -12,13 +12,14 @@ class Opms():
         res = requests.get(url)
         print(res.text)
 
-    def login_post(self):
+    def login_post(self,username="libai",password="opms123456"):
         url = self.host + "/login"
         head = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
-        datas = {"username": "libai",
-                 "password": "opms123456"}
+        datas = {"username": username,
+                 "password": password}
         res = self.s.post(url=url, headers=head, data=datas)
         print(res.text)
+        return res
 
     def proSer_1(self):
         url = self.host + "/project/manage"
@@ -38,13 +39,41 @@ class Opms():
         url = self.host + "/project/add"
         head = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
         datas = {
-                 "name": "测试23123122",
-                 "aliasname": "122",
-                 "started": "2022-03-16",
-                 "ended": "2022-03-16",
-                 "desc": "123123",
-                 "id": 0
-                }
+            "name": "测试23123122",
+            "aliasname": "122",
+            "started": "2022-03-16",
+            "ended": "2022-03-16",
+            "desc": "123123",
+            "id": 0
+        }
+        res = self.s.post(url=url, headers=head, data=datas)
+        #将json中的id提取出来
+        # print(res.text )
+        # return res.json()["id"]
+        # 用正则将id提取出来
+        id = re.findall(r'"id":"(.*?)"',res.text)
+        #发现时列表后通过索引下标提取
+        print(id[0])
+
+    def geteditProject(self, id):
+        url = self.host + "/project/edit/" + id
+        res = self.s.get(url=url)
+        print(res.text)
+
+    def editProject(self, id):
+        url = self.host + "/project/edit/" + id
+        head = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
+        datas = {
+            "name": "测试23123122",
+            "aliasname": "122",
+            "started": "2022-03-16",
+            "ended": "2022-03-16",
+            "desc": "123123",
+            "produserid": "请选择产品负责人",
+            "testuserid": "请选择测试负责人",
+            "publuserid": "请选择产品发布人",
+            "id": id
+        }
         res = self.s.post(url=url, headers=head, data=datas)
         print(res.text)
 
