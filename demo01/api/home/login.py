@@ -1,7 +1,7 @@
 import requests
 
 
-class Opms():
+class Opmslogin():
     def __init__(self, s=requests.session(), host="http://123.56.170.43:8888"):
         # requests中有session可以保存cookie
         self.s = s

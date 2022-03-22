@@ -55,13 +55,11 @@ class Opms():
         }
         res = self.s.post(url=url, headers=head, data=datas)
         # 将json中的id提取出来
-        # print(res.text )
-        # return res.json()["id"]
+        print(res.text)
+        return res.json()["id"]
         # 用正则将id提取出来
         # id = re.findall(r'"id":"(.*?)"', res.text)
         # 发现时列表后通过索引下标提取
-        print(res.text)
-        return res
 
     def geteditProject(self, id):
         url = self.host + "/project/edit/" + id
@@ -84,10 +82,11 @@ class Opms():
         }
         res = self.s.post(url=url, headers=head, data=datas)
         print(res.text)
-    #上传文件接口
+
+    # 上传文件接口
     def uploadFile(self):
         url = self.host + "/uploadmulti"
-        file = {"uploadfile":(open("name.txt"))}
+        file = {"uploadfile": (open("../api/projectManage/name.txt"))}
         res = self.s.post(url=url, files=file)
 
 

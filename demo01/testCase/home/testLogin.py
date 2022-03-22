@@ -1,17 +1,15 @@
 import pytest
-from demo01.api.home.login import Opms
+from demo01.api.home.login import Opmslogin
 
 
 # 测试登录接口,用户名为空
-def test_login_1():
-    res = Opms().login_post(username="")
-    code = res.json()['code']
+#参数化用户名和密码
+@pytest.mark.parametrize("names,password,code", [("", "", 0),
+                                                 ("libai", "opms123456", 1),
+                                                 ("libai123", "opms", 0), ])
+def test_login_1(names, code, password):
+    res = Opmslogin().login_post(username=names, password=password)
+    re_code = res.json()['code']
     # 断言
-    assert code == 0
+    assert re_code == code
 
-# 测试登录接口,密码为空
-def test_login_2():
-    res = Opms().login_post(password="")
-    code = res.json()['code']
-    # 断言
-    assert code == 0
