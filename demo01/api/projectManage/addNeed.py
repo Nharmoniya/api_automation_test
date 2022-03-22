@@ -1,7 +1,7 @@
 import requests
 
 
-class Opmsaddpro_uploadfile():
+class Opmsaddproject():
     def __init__(self, s=requests.session(), host="http://123.56.170.43:8888"):
         # requests中有session可以保存cookie
         self.s = s
@@ -34,18 +34,23 @@ class Opmsaddpro_uploadfile():
         }
         res = self.s.post(url=url, headers=head, data=datas)
         # 将json中的id提取出来
-        proid=res.json()['id']
-        print(proid)
+        print(res.text)
+        id = res.json()["id"]
+        print(id)
+
+    def addNeed(self, id, filename, name="xuqiu", source="1", level="1", stage="1", desc=""):
+        url = self.host + "/need/add/" + id
+        data = {"name": name,
+                "source": source,
+                "level": level,
+                "stage": stage,
+                "acceptid": "请选择指派给",
+                "tasktime": "0",
+                "desc": desc,
+                "acceptance": "1",
+                "projectid": id,
+                "id": 0, }
+        file = {"uploadFiles": open(filename, "rb")}
+        res = self.s.post(url=url, data=data, files=file)
+        print(res.text)
         return res
-
-    def upploadfile(self,
-                    title="ceshi",
-                    keyword="123",
-                    sort="1",
-                    url="",
-                    content="123123",
-                    file=(open("name.txt")),
-                    ):
-        url = self.host + "/doc/add/" + proid
-
-

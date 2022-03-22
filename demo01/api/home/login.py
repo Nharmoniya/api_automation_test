@@ -17,4 +17,5 @@ class Opmslogin():
         datas = {"username": username,
                  "password": password}
         res = self.s.post(url=url, headers=head, data=datas)
+        print(res.status_code)
         return res
