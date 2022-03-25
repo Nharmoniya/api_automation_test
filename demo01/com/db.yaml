@@ -1,0 +1,9 @@
+host:
+host","http://123.56.170.43:8888
+username,libai
+password,opms123456
+
+db:
+ip,123.56.170.43
+usr,root
+pwd,123456
