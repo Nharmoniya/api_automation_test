@@ -1,5 +1,4 @@
 import requests
-from demo01.com import readConfig
 from demo01.com.getHost import getHost
 
 class Opmslogin():
@@ -23,9 +22,6 @@ class Opmslogin():
 
 
 if __name__ == '__main__':
-    host = "http://123.56.170.43:8888"
-    head = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
-    datas = {"username": "libai",
-             "password": "opms123456"}
-    name = readConfig.getTxt("\conf\data.txt")[0]
-    lg = Opmslogin().login_post(username=name)
+    lg = Opmslogin()
+    lg.login_post()
+

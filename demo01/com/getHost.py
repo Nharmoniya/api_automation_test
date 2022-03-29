@@ -6,4 +6,12 @@ def getHost():
     return host
 
 
-getHost()
+def getUser():
+    user = getIni(name="\conf\data.ini", section='HOST', option='username')
+    return user
+
+
+def getPwd():
+    pwd = getIni(name="\conf\data.ini", section='HOST', option='password')
+    return pwd
+

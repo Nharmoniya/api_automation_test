@@ -14,12 +14,18 @@ def getIni(name, section, option):
     return res
 
 
-def getyaml():
-    f = open("db.yaml", "r")
-    cf = f.read()
-    res = yaml.load(cf, Loader=yaml.CLoader)
-    print(yaml.dump(res))
-    return res
+# def getyaml(file):
+#     path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + file
+#     f = open(path, "r")
+#     cf = f.read()
+#     res = yaml.load(cf, Loader=yaml.CLoader)
+#     return res
+#
+#
+# # path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "\conf\db.yaml"
+#
+# res = getyaml(file="\conf\db.yaml")
+# print(res['host'][0][1])
 # def getTxt(name="\conf\data.txt"):
 #     # 1、先获取当前工程的绝对路径
 #     # 2、工程绝对路径+文件相对路径
