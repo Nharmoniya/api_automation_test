@@ -14,12 +14,12 @@ def getIni(name, section, option):
     return res
 
 
-# def getyaml(file):
-#     path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + file
-#     f = open(path, "r")
-#     cf = f.read()
-#     res = yaml.load(cf, Loader=yaml.CLoader)
-#     return res
+def getyaml(file):
+    path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + file
+    f = open(path, "r")
+    cf = f.read()
+    res = yaml.load(cf, Loader=yaml.CLoader)
+    return res
 #
 #
 # # path = os.path.dirname(os.path.dirname(os.path.realpath(__file__))) + "\conf\db.yaml"

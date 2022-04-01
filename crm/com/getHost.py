@@ -1,5 +1,5 @@
 from crm.com.readConfig import getIni
-
+from crm.com.readConfig import getYaml
 
 def getHost():
     host = getIni(name="\conf\data.ini", section="HOST", option="host")
@@ -15,4 +15,8 @@ def getPassword():
     passWord = getIni(name="\conf\data.ini", section="ADMIN", option="password")
     return passWord
 
-getUser()
+def getYamldb():
+    host = getYaml(file="\conf\db.yaml")
+    return host
+
+getYamldb()

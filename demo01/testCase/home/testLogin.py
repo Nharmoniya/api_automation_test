@@ -1,6 +1,9 @@
 import pytest
 from demo01.api.home.login import Opmslogin
+from demo01.com.readConfig import getyaml
 
+res = getyaml(file='\conf\db.yaml')
+para=res['login']
 
 # 用户名参数化，密码参数化各种场景
 # 测试登录接口,用户名为空

@@ -1,9 +1,17 @@
 host:
-host,http://123.56.170.43:8888
-username,libai
-password,opms123456
+  -["host","http://123.56.170.43:8888"]
+  -["username","libai"]
+  -["password","opms123456"]
 
 db:
-ip,123.56.170.43
-usr,root
-pwd,123456
+  -["ip",123.56.170.43]
+  -["usr","root"]
+  -["pwd","123456"]
+
+login:
+  -["libai":"opms123456",1]
+  -["","opms123456",0]
+  -["libai","",0]
+  -["libai","12345",0]
+  -["libai1234","opms123456",0]
+
